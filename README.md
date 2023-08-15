@@ -11,3 +11,7 @@ git checkout -b main //prod
 
 ## 2. Flutter version management
 https://fvm.app/
+```
+brew tap leoafarias/fvm
+brew install fvm
+```
