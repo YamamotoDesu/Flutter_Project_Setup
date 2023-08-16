@@ -14,4 +14,28 @@ https://fvm.app/
 ```
 brew tap leoafarias/fvm
 brew install fvm
+fvm install {{version}}
+fvm global {{version}}
+fvm use {{version}}
 ```
+
+.vscode/settings.json
+```json
+{
+    "dart.flutterSdkPath": ".fvm/flutter_sdk",
+    // Remove .fvm files from search
+    "search.exclude": {
+        "**/.fvm": true
+    },
+    // Remove from file watching
+    "files.watcherExclude": {
+        "**/.fvm": true
+    }
+}
+```
+
+.gitignore
+```
+.fvm/flutter_sdk
+```
+
