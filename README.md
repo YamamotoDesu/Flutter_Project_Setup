@@ -133,3 +133,9 @@ Command
 ```
 flutter pub run flutter_flavorizr
 ```
+
+## 4. Code Signing
+Android Flavor and Code Signing
+```
+keytool -genkeypair -alias <エイリアス名> -keyalg <鍵ペアのアルゴリズム> -keysize <鍵のサイズ> -sigalg <署名アルゴリズム> -dname <識別名> -validity <有効日数> -storetype <キーストアのタイプ> -keystore <キーストアのファイル名> -storepass <キーストアのパスワード>
+```
