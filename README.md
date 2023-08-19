@@ -39,6 +39,86 @@ fvm use {{version}}
 .fvm/flutter_sdk
 ```
 
+pubspec.yaml
+```yaml
+flavorizr:
+  ide: "vscode"
+  app:
+    android:
+      flavorDimensions: "flavor"
+
+  flavors:
+    dev:
+      app:
+        name: "EcomApp"
+
+      android:
+        applicationId: "kyo.desu.ecom_app"
+        generateDummyAssets: true
+        # icon: ""
+        customConfig:
+          applicationIdSuffix: "\".development\""
+          versionNameSuffix: "\"Dev\""
+          signingConfig: signingConfigs.dev
+      ios:
+        bundleId: "kyo.desu.ecom_app.dev"
+        generateDummyAssets: true
+        # icon: ""
+        buildSettings:
+
+    qa:
+      app:
+        name: "EcomApp"
+
+      android:
+        applicationId: "kyo.desu.ecom_app"
+        generateDummyAssets: true
+        # icon: ""
+        customConfig:
+          applicationIdSuffix: "\".qa\""
+          versionNameSuffix: "\"QA\""
+          signingConfig: signingConfigs.qa
+      ios:
+        bundleId: "kyo.desu.ecom_app.qa"
+        generateDummyAssets: true
+        # icon: ""
+        buildSettings:
+
+    uat:
+      app:
+        name: "EcomApp"
+
+      android:
+        applicationId: "kyo.desu.ecom_app"
+        generateDummyAssets: true
+        # icon: ""
+        customConfig:
+          applicationIdSuffix: "\".uat\""
+          versionNameSuffix: "\"UAT\""
+          signingConfig: signingConfigs.uat
+      ios:
+        bundleId: "kyo.desu.ecom_app.uat"
+        generateDummyAssets: true
+        # icon: ""
+        buildSettings:
+
+    prod:
+      app:
+        name: "EcomApp"
+
+      android:
+        applicationId: "kyo.desu.ecom_app"
+        generateDummyAssets: true
+        # icon: ""
+        customConfig:
+          signingConfig: signingConfigs.prod
+      ios:
+        bundleId: "kyo.desu.ecom_app"
+        generateDummyAssets: true
+        # icon: ""
+        buildSettings:
+```
+
 ## 3. Flutter Flavor Setup
 
 pubspec.yaml
