@@ -173,6 +173,8 @@ if (keyPropertiesFile.exists()) {
     }
 }
 
+
+android {
         signingConfigs {
         debug {
             keyAlias keyProperties['dev.keyAlias']
