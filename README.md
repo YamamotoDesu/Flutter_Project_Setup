@@ -282,3 +282,6 @@ android {
         }
     }
 ```
+
+<img width="285" alt="image" src="https://github.com/YamamotoDesu/flutter_project_setup/assets/47273077/027fda3d-fec1-4c83-b4eb-ebe719d773b4">
+
