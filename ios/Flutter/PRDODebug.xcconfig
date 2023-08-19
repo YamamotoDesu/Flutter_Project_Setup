@@ -1,0 +1,6 @@
+#include "Generated.xcconfig"
+
+FLUTTER_TARGET=lib/main_PRDO.dart
+ASSET_PREFIX=PRDO
+BUNDLE_NAME=EcomApp
+BUNDLE_DISPLAY_NAME=EcomApp
