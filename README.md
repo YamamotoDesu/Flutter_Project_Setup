@@ -307,6 +307,17 @@ flutter:
     - .prod.env
 ```
 
+gitignore
+```
+*.env
+```
+
+.dev.env
+```env
+BASE_URL=api.dev.yamamoto.desu
+API_KEY=1234567
+```
+
 lib/core/flavor/flavor.dart
 ```dart
 enum Flavor {
