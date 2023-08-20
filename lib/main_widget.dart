@@ -1,3 +1,4 @@
+import 'package:ecom_app/base/base_state.dart';
 import 'package:flutter/material.dart';
 
 class MainWidget extends StatelessWidget {
@@ -10,7 +11,21 @@ class MainWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: Scaffold(body: Container()),
+      home: const HomePage(),
     );
+  }
+}
+
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends BaseState<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Container());
   }
 }

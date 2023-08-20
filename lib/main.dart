@@ -5,6 +5,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:ecom_app/core/env/env_reader.dart';
 import 'package:ecom_app/core/flavor/flavor.dart';
+import 'package:ecom_app/common/logger/logger_provider.dart';
 
 FutureOr<void> mainApp(Flavor flavor) async {
   // An object that stores the state of the providers and allows overriding the behavior of a specific provider.
@@ -13,6 +14,9 @@ FutureOr<void> mainApp(Flavor flavor) async {
   final envReader = container.read(envReaderProvider);
   final envFile = envReader.getEnvFileName(flavor);
   await dotenv.load(fileName: envFile);
+
+  // Setup Logger
+  container.read(loggerProvider);
 
   runApp(
     UncontrolledProviderScope(
