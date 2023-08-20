@@ -442,7 +442,7 @@ linter:
 
 ##  8. Logger
 pubspec.yaml
-```dart
+```yaml
   # https://pub.dev/packages/logging
   logging: ^1.2.0
 ```
