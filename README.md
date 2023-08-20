@@ -440,3 +440,114 @@ linter:
     no_leading_underscores_for_local_identifiers: false
 ```
 
+##  8. Logger
+pubspec.yaml
+```dart
+  # https://pub.dev/packages/logging
+  logging: ^1.2.0
+```
+
+lib/common/logger/logger_provider.dart
+```dart
+import 'package:flutter/foundation.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
+
+final loggerProvider = Provider<SetupLogger>((ref) {
+  return SetupLogger();
+});
+
+class SetupLogger {
+
+  SetupLogger () {
+    _init();
+  }
+
+  void _init() {
+    if (kDebugMode) {
+
+      Logger.root.level = Level.ALL;
+      Logger.root.onRecord.listen((record) {
+
+        if (record.level == Level.SEVERE) {
+          debugPrint('${record.level.name}: ${record.time}: ${record.message}: ${record.error}: ${record.stackTrace}');
+        } else if (record.level == Level.INFO) {
+           debugPrint('${record.level.name}: ${record.message}');
+        } else {
+          debugPrint('${record.level.name}: ${record.time}: ${record.message}');
+        }
+      
+      });
+
+    } else {
+      Logger.root.level = Level.OFF;
+    }
+  }
+}
+}
+```
+
+lib/base/base_state.dart
+```dart
+import 'package:flutter/material.dart';
+import 'package:logging/logging.dart';
+
+abstract class BaseState<T extends StatefulWidget> extends State<T> {
+ 
+  Logger get log => Logger(T.toString());
+ 
+  @override
+  void initState() {
+    log.info('$T initState');
+    super.initState();
+  }
+
+  void init() {}
+
+  @override
+  void dispose() {
+    log.info('$T dispose');
+    super.dispose();
+  }
+}
+```
+
+lib/base/base_consumer_state.dart
+```dart
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:logging/logging.dart';
+
+abstract class BaseConsumer<T extends ConsumerStatefulWidget> extends ConsumerState<T> {
+ 
+  Logger get log => Logger(T.toString());
+ 
+  @override
+  void initState() {
+    log.info('$T initState');
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    log.info('$T dispose');
+    super.dispose();
+  }
+}
+```
+
+lib/main_widget.dart
+```dart
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends BaseState<HomePage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(body: Container());
+  }
+}
+```
