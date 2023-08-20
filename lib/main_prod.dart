@@ -1,8 +1,7 @@
-import 'flavors.dart';
+import 'package:ecom_app/main.dart';
 
-import 'main.dart' as runner;
+import 'core/flavor/flavor.dart';
 
 Future<void> main() async {
-  F.appFlavor = Flavor.prod;
-  await runner.main();
+  mainApp(Flavor.prod);
 }
