@@ -287,3 +287,53 @@ android {
 
 <img width="467" alt="image" src="https://github.com/YamamotoDesu/flutter_project_setup/assets/47273077/34e43261-b1b4-4464-9698-2fb5f58ca1e6">
 
+## 5. Configure Environment
+pubspec.yaml
+```yaml
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # https://pub.dev/packages/flutter_dotenv
+  flutter_dotenv: ^5.1.0
+
+flutter:
+
+
+  assets:
+    - .dev.env
+    - .qa.env
+    - .uat.env
+    - .prod.env
+```
+
+lib/core/flavor/flavor.dart
+```dart
+enum Flavor {
+  dev,
+  qa,
+  uat,
+  prod,
+}
+```
+
+lib/core/env/env_reader.dart
+```dart
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:ecom_app/core/flavor/flavor.dart';
+
+class EnvReader {
+  String getBaseUrl(Flavor flavor) {
+    return switch (flavor) {
+      Flavor.dev => ".dev.env",
+      Flavor.uat => ".uat.env",
+      Flavor.qa => ".qa.env",
+      Flavor.prod => ".prod.env",
+    };
+  }
+
+  String? getApiKey() {
+    return dotenv.env['API_KEY'];
+  }
+}
+```
