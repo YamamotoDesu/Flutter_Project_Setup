@@ -551,3 +551,7 @@ class _HomePageState extends BaseState<HomePage> {
   }
 }
 ```
+
+### 9. Flutter Translation 
+How to set up
+https://github.com/roipeker/flutter_translation_sheet/wiki
